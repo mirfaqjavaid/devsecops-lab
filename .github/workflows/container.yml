@@ -18,7 +18,7 @@ jobs:
         run: docker build -t task-api:ci .
 
       - name: Scan the Dockerfile for misconfigurations
-        uses: aquasecurity/trivy-action@0.35.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           scan-type: config
           scan-ref: .
@@ -26,7 +26,7 @@ jobs:
           exit-code: 1
 
       - name: Scan the image for vulnerabilities
-        uses: aquasecurity/trivy-action@0.35.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: task-api:ci
           vuln-type: os
@@ -35,7 +35,7 @@ jobs:
           exit-code: 1
 
       - name: Create the SBOM
-        uses: aquasecurity/trivy-action@0.35.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: task-api:ci
           format: cyclonedx
